@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<!--
+  ===================================================================
+  AULA PRÁTICA: ANATOMIA DE UMA LANDING PAGE
+  ===================================================================
+  Este arquivo é a landing page REAL do Grupo LumiNex (marca da G'S Empreendimentos).
+  Os comentários numerados (NÍVEL 1, 2, 3...) marcam o que é
+  básico, intermediário e avançado. Leia na ordem, de cima pra baixo.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- NÍVEL 1 (básico): viewport é obrigatório pra página funcionar no celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- NÍVEL 3 (avançado): SEO básico — o Google e o preview do WhatsApp leem isso -->
+  <title>Grupo LumiNex | Dados, Automação & Software sob medida</title>
+  <meta name="description" content="LumiNex, LumiKode e LumiVek: as 3 frentes do Grupo LumiNex — dados e IA, engenharia de software e automação de processos. Uma marca da G'S Empreendimentos.">
+  <link rel="canonical" href="https://bentoosilva001-coder.github.io/gs-empreendimentos/">
+
+  <!-- NÍVEL 4/5: favicon como SVG "data URI" — o código do ícone vai
+       direto na própria tag, sem precisar de um arquivo .ico externo.
+       Menos um arquivo pra gerenciar/hospedar. -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,2 36,11 36,29 20,38 4,29 4,11' fill='%230A192F' stroke='%23D4AF37' stroke-width='2'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%23D4AF37'/%3E%3Cline x1='20' y1='20' x2='20' y2='9' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Cline x1='20' y1='20' x2='29' y2='26' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Cline x1='20' y1='20' x2='11' y2='26' stroke='%23D4AF37' stroke-width='1.5'/%3E%3C/svg%3E">
+
+  <!-- NÍVEL 4 (acima do avançado) — OPEN GRAPH:
+       o meta description sozinho só ajuda o Google. Quem realmente
+       controla como o link aparece quando alguém cola no WhatsApp,
+       Instagram ou Facebook é o protocolo Open Graph (prefixo "og:").
+       Sem isso, essas redes tentam "adivinhar" o que mostrar — com
+       isso, você decide exatamente o título, texto e tipo de conteúdo. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Grupo LumiNex">
+  <meta property="og:title" content="Grupo LumiNex | Dados, Automação & Software sob medida">
+  <meta property="og:description" content="Dashboards e IA (LumiNex), software sob medida (LumiKode) e automação de processos (LumiVek). Três divisões, um só parceiro de tecnologia.">
+  <meta property="og:url" content="https://bentoosilva001-coder.github.io/gs-empreendimentos/">
+  <meta property="og:locale" content="pt_BR">
+  <!-- NÍVEL 5: og:image é a "capa" que aparece quando o link é
+       compartilhado. Sempre em caminho absoluto (com https://) —
+       diferente do resto do site, esse tipo de preview costuma ser
+       gerado por um robô externo (do WhatsApp, do Instagram) que
+       não navega o site como uma pessoa, então precisa do endereço
+       completo, não um caminho relativo. -->
+  <meta property="og:image" content="https://bentoosilva001-coder.github.io/gs-empreendimentos/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://bentoosilva001-coder.github.io/gs-empreendimentos/assets/og-image.jpg">
+
+  <!-- Mesma ideia, mas para quem abre o link dentro do X/Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Grupo LumiNex | Dados, Automação & Software sob medida">
+  <meta name="twitter:description" content="Dashboards e IA, software sob medida e automação de processos — as 3 divisões do Grupo LumiNex.">
+
+  <!-- Cor que o Android/Chrome usa na barra do topo do navegador quando
+       alguém abre o site pelo celular — detalhe pequeno, mas é o que
+       faz um site parecer "produto acabado" em vez de "página solta". -->
+  <meta name="theme-color" content="#0F1B24">
+
+  <!-- NÍVEL 3 (avançado) — SELF-HOSTING DE FONTE, completo:
+       preconnect ao Google não é mais necessário — a página não
+       depende mais de nenhum servidor externo pra exibir texto.
+       Todos os pesos (Sora 400/600/700 e IBM Plex Sans 400/500/600)
+       agora vêm de arquivos locais na pasta /fonts, via @font-face
+       abaixo. Isso reduz uma conexão externa inteira, deixa o
+       carregamento mais previsível (não depende do Google estar no
+       ar) e some com o "flash" de troca de fonte em conexões lentas. -->
+
+  <style>
+    /* NÍVEL 3 (avançado): @font-face é como você registra uma fonte
+       hospedada por VOCÊ. O navegador casa font-family + font-weight
+       com a declaração certa — por isso repetimos o mesmo
+       font-family ('Sora') três vezes, uma pra cada peso. */
+    @font-face {
+      font-family: 'Sora';
+      src: url('fonts/sora-400.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Sora';
+      src: url('fonts/sora-600.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Sora';
+      src: url('fonts/sora-700.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      src: url('fonts/plex-400.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      src: url('fonts/plex-500.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      src: url('fonts/plex-600.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    /* ==================================================================
+       NÍVEL 2 (intermediário): VARIÁVEIS CSS (design tokens)
+       Em vez de repetir a mesma cor em 15 lugares, você declara UMA vez
+       aqui e usa var(--nome) no resto do arquivo. Se depois quiser
+       trocar a cor de destaque, muda só uma linha.
+       ================================================================== */
+    :root {
+      /* Paleta oficial do Grupo LumiNex: Azul Profundo + Dourado Nobre.
+         Usei um dourado um pouco mais "metálico" (#D4AF37) em vez do
+         amarelo puro (#FFD700) do manual — fica mais premium/sóbrio em
+         telas, o amarelo puro tende a parecer berrante em fundo escuro. */
+      --bg: #0A192F;
+      --surface: #0F2340;
+      --surface-2: #153458;
+      --text: #EAF1FA;
+      --text-dim: #90A3BC;
+      --accent: #D4AF37;
+      --accent-warm: #F0C955;
+      --border: #1F4A78;
+
+      --font-head: 'Sora', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+
+      --radius: 10px;
+      --max-width: 1080px;
+    }
+
+    /* NÍVEL 1 (básico): reset — navegadores têm margens/paddings padrão
+       diferentes entre si. Zerar tudo evita surpresas. */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    /* NÍVEL 1 (básico): container centralizado — o "molde" que toda
+       seção usa por dentro, pra não colar o conteúdo na borda da tela */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================== HEADER ============================== */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 27, 36, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+    .logo span { color: var(--accent); }
+    .logo-mark { flex-shrink: 0; }
+
+    /* Barra de progresso de leitura */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%; /* o JS atualiza esse valor conforme rola a página */
+      background: linear-gradient(90deg, var(--accent), var(--accent-warm));
+      z-index: 200; /* acima até do header sticky */
+      transition: width 0.1s ease-out;
+    }
+
+    /* Indicador "sistema online" */
+    .online-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-left: 4px;
+    }
+    .online-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #5AE87E;
+      box-shadow: 0 0 0 rgba(90, 232, 126, 0.6);
+      animation: online-pulse 2s infinite;
+    }
+    @keyframes online-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(90, 232, 126, 0.5); }
+      70% { box-shadow: 0 0 0 6px rgba(90, 232, 126, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(90, 232, 126, 0); }
+    }
+    @media (max-width: 480px) {
+      .online-badge { display: none; } /* espaço curto demais no celular pequeno */
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn-cta {
+      background: var(--accent);
+      color: #0A1319;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-cta:hover { background: #6EDCD1; transform: translateY(-1px); }
+
+    /* Some no mobile e vira menu simplificado (ver NÍVEL 2: media query) */
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+    }
+
+    /* ============================== HERO ============================== */
+    .hero {
+      padding: 80px 0 60px;
+      position: relative; /* necessário pra "ancorar" o canvas absoluto */
+      overflow: hidden;
+    }
+
+    .network-canvas {
+      position: absolute;
+      inset: 0; /* atalho pra top:0; right:0; bottom:0; left:0 */
+      width: 100%;
+      height: 100%;
+      opacity: 0.35; /* sutil — é textura de fundo, não pode competir com o texto */
+      pointer-events: none; /* clique "atravessa" o canvas até o que está embaixo... na verdade acima, veja z-index */
+    }
+
+    /* Spotlight que segue o mouse/dedo */
+    .spotlight {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        380px circle at var(--mx, 50%) var(--my, 20%),
+        rgba(212, 175, 55, 0.14),
+        transparent 70%
+      );
+      transition: background 0.05s linear;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .spotlight { display: none; }
+    }
+
+    /* .hero-grid precisa de z-index pra ficar VISUALMENTE acima do
+       canvas, mesmo o canvas vindo depois dele na ordem do HTML. */
+    .hero .container { position: relative; z-index: 1; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      max-width: 520px;
+      margin-bottom: 20px;
+    }
+
+    .hero p.lead {
+      color: var(--text-dim);
+      font-size: 17px;
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent-warm);
+      color: #221703;
+      font-weight: 600;
+      padding: 14px 26px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      transition: transform 0.15s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      padding: 14px 26px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      color: var(--text);
+      transition: border-color 0.15s ease;
+    }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* -------- DEMO DE CHAT (o "hero visual" que substitui o gradiente clichê) -------- */
+    .chat-demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-demo-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    .bubble {
+      max-width: 78%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: rise 0.4s ease forwards;
+    }
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bubble.client {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #0A1319;
+      border-bottom-right-radius: 2px;
+    }
+    .bubble.bot {
+      align-self: flex-start;
+      background: var(--surface-2);
+      border-bottom-left-radius: 2px;
+    }
+
+    /* ============================== SEÇÕES ============================== */
+    section { padding: 64px 0; }
+
+    /* NÍVEL 3 (avançado) — PERFORMANCE, passo 2:
+       content-visibility: auto diz ao navegador "não gaste tempo
+       calculando estilo/layout desse bloco enquanto ele não aparecer
+       na tela". O .hero fica de fora (é a primeira coisa que a
+       pessoa vê, então tem que renderizar na hora). As seções
+       seguintes só "ligam" quando o usuário rola até elas.
+       contain-intrinsic-size é uma altura estimada, pra página não
+       "pular" de tamanho quando a seção liga de verdade. */
+    section:not(.hero) {
+      content-visibility: auto;
+      contain-intrinsic-size: 600px;
+    }
+
+    .section-head { max-width: 560px; margin-bottom: 40px; }
+    .section-head h2 { font-size: 28px; margin-bottom: 12px; }
+    .section-head p { color: var(--text-dim); font-size: 15px; }
+
+    /* ============================== AS 3 DIVISÕES (NOVO) ============================== */
+    .division-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    @media (max-width: 900px) {
+      .division-grid { grid-template-columns: 1fr; }
+    }
+
+    .division-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .division-logo {
+      width: 100%;
+      aspect-ratio: 700 / 381;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .division-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+    .division-card h3 { font-family: var(--font-head); font-size: 19px; margin-bottom: 4px; }
+    .division-tag { color: var(--text-dim); font-size: 13px; margin-bottom: 18px; }
+
+    .division-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      margin-top: auto;
+      transition: border-color 0.15s ease;
+    }
+    .division-toggle:hover { border-color: var(--accent); }
+    .division-toggle .chevron { flex-shrink: 0; transition: transform 0.25s ease; color: var(--accent); }
+    /* Quando aberto (via JS: aria-expanded="true"), a setinha vira 180° */
+    .division-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+    /* NÍVEL 6: o painel começa com max-height:0 e overflow:hidden —
+       invisível e sem ocupar espaço, mas ainda "existe" no HTML
+       (diferente de display:none). O JS calcula a altura real do
+       conteúdo (division-panel-inner) e aplica esse valor exato como
+       max-height quando abre, criando a animação suave de expandir. */
+    .division-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .division-panel-inner {
+      padding-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .division-service {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .division-service:first-child { border-top: none; padding-top: 0; }
+    .division-service-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .division-service h4 { font-size: 14px; color: var(--text); }
+    .division-service .price {
+      font-family: var(--font-head);
+      color: var(--accent-warm);
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .division-service p { color: var(--text-dim); font-size: 13px; line-height: 1.6; }
+
+    /* ============================== QUEM ESTÁ POR TRÁS (NOVO) ============================== */
+    .about-box {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+    }
+    @media (max-width: 640px) {
+      .about-box { flex-direction: column; align-items: center; text-align: center; }
+    }
+    .about-avatar {
+      flex-shrink: 0;
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 26px;
+      color: #0A1319;
+    }
+    .about-box h2 { font-size: 22px; margin-bottom: 4px; }
+    .about-role { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+    .about-box p:not(.about-role) { color: var(--text-dim); font-size: 14px; line-height: 1.7; }
+
+    /* ============================== FAQ (NOVO) ============================== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      text-align: left;
+      padding: 18px 20px;
+      cursor: pointer;
+    }
+    .faq-question .chevron { flex-shrink: 0; color: var(--accent); transition: transform 0.25s ease; }
+    .faq-question[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    /* Mesma técnica de altura real (scrollHeight) que já usamos no
+       acordeão das divisões — reaproveitar padrão já testado. */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-answer p {
+      padding: 0 20px 18px;
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* Aviso de privacidade (LGPD) perto do formulário */
+    .privacy-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Link "Pedir orçamento" — leva a conversa de preço pro WhatsApp,
+       onde o Lumi entende a necessidade antes de falar valor exato. */
+    .division-service .ask-quote {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .division-service .ask-quote svg { flex-shrink: 0; }
+    .division-service .ask-quote:hover { text-decoration: underline; }
+
+    /* ============================== TERMINAL AO VIVO (NOVO) ============================== */
+    .terminal {
+      background: #0A1319;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 640px;
+      margin: 0 auto 40px;
+      box-shadow: 0 20px 60px -20px rgba(0,0,0,0.5);
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .terminal-title {
+      margin-left: 8px;
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: 'Courier New', monospace;
+    }
+    .terminal-body {
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.9;
+      min-height: 180px;
+    }
+    .terminal-line { opacity: 0; animation: terminal-appear 0.3s ease forwards; }
+    @keyframes terminal-appear { to { opacity: 1; } }
+    .terminal-line .ok { color: var(--accent); }
+    .terminal-line .tag { color: var(--accent-warm); }
+    .terminal-line .dim { color: var(--text-dim); }
+    .terminal-cursor {
+      display: inline-block;
+      width: 7px; height: 14px;
+      background: var(--accent);
+      animation: pulse 1s infinite;
+      vertical-align: middle;
+    }
+
+    /* Selos de confiança */
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ============================== CONTADOR DE RESULTADOS (NOVO) ============================== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .stat-label {
+      color: var(--text-dim);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* Como funciona (processo) */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step .step-num {
+      font-family: var(--font-head);
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .step h3 { font-size: 16px; margin-bottom: 4px; }
+    .step p { color: var(--text-dim); font-size: 14px; }
+
+    /* Contato / formulário */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 860px) {
+      .contact-box { grid-template-columns: 1fr; }
+    }
+
+    .contact-box h2 { font-size: 24px; margin-bottom: 12px; }
+    .contact-box p { color: var(--text-dim); font-size: 14px; margin-bottom: 20px; }
+
+    form { display: flex; flex-direction: column; gap: 12px; }
+
+    label {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: -6px;
+    }
+
+    input, textarea {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea { resize: vertical; min-height: 90px; }
+
+    .form-msg {
+      font-size: 13px;
+      margin-top: 4px;
+      min-height: 18px;
+    }
+    .form-msg.ok { color: var(--accent); }
+    .form-msg.err { color: #E88A5A; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 720px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+    .footer-brand .logo { margin-bottom: 12px; }
+    .footer-tagline { font-size: 13px; color: var(--text-dim); max-width: 280px; margin-bottom: 16px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--text-dim);
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .footer-social a:hover { color: var(--accent); border-color: var(--accent); }
+
+    .footer-nav { display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-title { color: var(--text); font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+    .footer-nav a { color: var(--text-dim); font-size: 13px; }
+    .footer-nav a:hover { color: var(--accent); }
+
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-dim);
+      justify-content: flex-end;
+    }
+    @media (max-width: 720px) {
+      .footer-meta { align-items: flex-start; }
+    }
+
+    /* Botão flutuante "voltar ao topo" */
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0A1319;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none; /* invisível E "clicável através" enquanto escondido */
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 90;
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Botão flutuante do WhatsApp — sempre visível (diferente do
+       "voltar ao topo", que só aparece depois de rolar), porque o
+       objetivo aqui é nunca deixar o caminho até o contato longe
+       de um toque, em qualquer ponto da página. */
+    .whatsapp-float {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366; /* verde oficial do WhatsApp — reconhecimento imediato */
+      display: flex; align-items: center; justify-content: center;
+      z-index: 90;
+      box-shadow: 0 8px 24px -6px rgba(0,0,0,0.5);
+      transition: transform 0.15s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    .whatsapp-float svg { width: 30px; height: 30px; }
+
+    /* No celular, afasta um pouco da borda pra não ficar embaixo
+       do polegar por acidente enquanto rola a página. */
+    @media (max-width: 480px) {
+      .whatsapp-float { left: 16px; bottom: 16px; width: 52px; height: 52px; }
+    }
+
+    /* Toast (avisinho temporário) do botão de copiar */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 20px);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 150;
+    }
+    .toast.visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-size: 13px;
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 4px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .btn-copy:hover { border-color: var(--accent); color: var(--text); }
+
+    /* NÍVEL 3 (avançado) — ANIMAÇÕES ORQUESTRADAS POR SCROLL:
+       o elemento começa "invisível e um pouco abaixo" (opacity: 0,
+       translateY). Quando o JS detecta que ele entrou na tela,
+       adiciona a classe .visible, e a transition abaixo cuida do
+       movimento suave. Repare que só animamos opacity/transform —
+       são as duas propriedades que o navegador anima "de graça" na
+       GPU, sem recalcular layout (por isso não trava a rolagem). */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Cada card/step da mesma seção anima com um pequeno atraso entre
+       si, criando o efeito de "cascata" em vez de tudo pipocar junto. */
+    .division-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .division-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .division-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .steps .reveal:nth-child(1) { transition-delay: 0s; }
+    .steps .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .steps .reveal:nth-child(3) { transition-delay: 0.16s; }
+    .steps .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.visible { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* NÍVEL 3 (avançado): respeita quem desativou animações no sistema */
+    @media (prefers-reduced-motion: reduce) {
+      .dot, .bubble { animation: none; opacity: 1; transform: none; }
+      .network-canvas { display: none; }
+    }
+  </style>
+  <!-- NÍVEL 4 (acima do avançado) — DADOS ESTRUTURADOS (JSON-LD):
+       isso não aparece visualmente pra ninguém — é um "bilhete"
+       escrito numa linguagem que só robôs de busca leem. Ele diz,
+       de forma explícita: "isto aqui é uma empresa (LocalBusiness),
+       o nome dela é X, o telefone é Y". O Google usa isso pra
+       decidir se mostra seu site com informações extras na busca
+       (telefone clicável, por exemplo), em vez de só um link azul. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Grupo LumiNex",
+    "description": "Dashboards e BI, agentes de IA, software sob medida e automação de processos — as 3 frentes do Grupo LumiNex.",
+    "url": "https://bentoosilva001-coder.github.io/gs-empreendimentos/",
+    "telephone": "+5598984110339",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "G'S Empreendimentos"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Gerdyson Silva"
+    },
+    "areaServed": "BR"
+  }
+  </script>
+
+  <!-- NÍVEL 11 — GOOGLE ANALYTICS (Analytics e SEO):
+       Isso conta visitantes, de onde vieram (Google, Instagram,
+       direto) e o que fazem no site. AINDA NÃO FUNCIONA sozinho —
+       precisa trocar "G-XXXXXXXXXX" pela SUA medição real.
+
+       Como pegar a sua:
+       1. Crie conta grátis em analytics.google.com
+       2. Crie uma propriedade nova, tipo "Grupo LumiNex"
+       3. Em "Fluxos de dados" > Web, cadastre a URL do site
+       4. Copie o "ID de métricas" (começa com G-) e cole nas DUAS
+          linhas abaixo, no lugar de G-XXXXXXXXXX -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+
+  <!-- NÍVEL 5: barra de progresso de leitura — uma faixa fina e fixa
+       no topo, cuja largura cresce conforme a pessoa rola a página.
+       É o mesmo indicador que sites de notícia/blog usam pra mostrar
+       "quanto falta" do conteúdo. -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- =========================== HEADER =========================== -->
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <!-- NÍVEL 4/5: SVG inline — hexágono com um "núcleo" central e
+             vetores radiantes, representando o conceito da marca
+             (núcleo de inteligência com conexões multidirecionais). -->
+        <svg class="logo-mark" width="30" height="30" viewBox="0 0 40 40" aria-hidden="true">
+          <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <circle cx="20" cy="20" r="4" fill="var(--accent)"/>
+          <line x1="20" y1="20" x2="20" y2="9" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="20" y1="20" x2="29" y2="26" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="20" y1="20" x2="11" y2="26" stroke="var(--accent)" stroke-width="1.5"/>
+        </svg>
+        Grupo <span>LumiNex</span>
+        <!-- Indicador "sistema online" — reforça, de forma sutil, que
+             o atendimento automático está sempre ativo. -->
+        <span class="online-badge"><span class="online-dot"></span>online</span>
+      </div>
+      <div class="nav-links">
+        <a href="#divisoes">Divisões</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <a href="#contato" class="btn-cta">Falar agora</a>
+    </nav>
+  </header>
+
+  <!-- =========================== HERO =========================== -->
+  <section class="hero">
+    <!-- NÍVEL 5: <canvas> é uma "tela em branco" que o JS desenha
+         pixel a pixel — diferente de SVG (que descreve formas), aqui
+         calculamos a posição de cada ponto a cada frame. É a técnica
+         usada pra animações mais "orgânicas" (partículas, redes,
+         fumaça) que seriam pesadas demais como elementos HTML normais. -->
+    <canvas id="networkCanvas" class="network-canvas" aria-hidden="true"></canvas>
+    <!-- NÍVEL 5: camada de "luz" que segue o mouse/dedo — é um div
+         com um gradiente radial, cuja POSIÇÃO é atualizada via
+         variáveis CSS (--mx, --my) no JavaScript. O CSS não sabe onde
+         o mouse está; ele só sabe "desenhar a luz onde as variáveis
+         mandarem". Separação limpa entre estilo e comportamento. -->
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Automação para negócios locais</span>
+        <!-- O texto começa vazio — o JS "digita" o conteúdo real.
+             Manter o texto real dentro de data-text garante que,
+             mesmo sem JavaScript funcionando, o título não suma. -->
+        <h1 id="heroTitle" data-text="Atendimento automático que capta cliente enquanto você dorme."></h1>
+        <p class="lead">Desenvolvemos sistemas de atendimento automático, captação de leads e landing pages que transformam visitante em contrato fechado.</p>
+        <div class="hero-ctas">
+          <a href="#contato" class="btn-primary">Quero automatizar meu atendimento</a>
+          <a href="#divisoes" class="btn-secondary">Ver divisões</a>
+        </div>
+      </div>
+
+      <!-- Demo de chat: o "produto" acontecendo ao vivo -->
+      <div class="chat-demo">
+        <div class="chat-demo-label"><span class="dot"></span> atendimento automático — ao vivo</div>
+        <div id="chatBubbles"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== AS 3 DIVISÕES (NOVO) =========================== -->
+  <section id="divisoes">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>As 3 frentes do Grupo LumiNex</h2>
+        <p>Cada divisão é especializada numa parte da transformação digital do seu negócio. Toque em cada uma pra ver como funciona.</p>
+      </div>
+
+      <!-- NÍVEL 6 — ACORDEÃO COM ALTURA REAL (não display:none):
+           cada card tem um botão que expande um painel escondido.
+           Em vez de max-height fixo (que corta conteúdo maior ou
+           deixa espaço vazio em conteúdo menor), o JS mede a altura
+           REAL do conteúdo (scrollHeight) e anima até esse valor
+           exato — por isso funciona perfeitamente pra qualquer
+           quantidade de serviços em cada divisão. -->
+      <div class="division-grid">
+
+        <!-- LumiNex — Dados, Estratégia & IA -->
+        <article class="division-card reveal" data-division="luminex">
+          <img src="assets/logo-luminex.jpg" alt="LumiNex" class="division-logo" loading="lazy">
+          <div class="division-body">
+            <h3>LumiNex</h3>
+            <p class="division-tag">Dados, estratégia e IA aplicada à gestão</p>
+            <button class="division-toggle" aria-expanded="false">
+              <span>Ver serviços da LumiNex</span>
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="division-panel">
+              <div class="division-panel-inner">
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Dashboard e BI</h4><span class="price">A partir de R$ 1.500</span></div>
+                  <p>A empresa manda a planilha que já tem. Devolvemos um painel visual que filtra por região e produto, mostrando o problema em um clique — sem precisar caçar dado em aba escondida.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Dashboard%20e%20BI." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Agente de IA interno</h4><span class="price">A partir de R$ 3.000</span></div>
+                  <p>Uma IA treinada com os documentos da própria empresa — contrato, manual, política interna. Responde dúvidas e já cita de onde tirou a resposta.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Agente%20de%20IA%20interno." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- LumiKode — Engenharia & Software Sob Medida -->
+        <article class="division-card reveal" data-division="lumikode">
+          <img src="assets/logo-lumikode.jpg" alt="LumiKode" class="division-logo" loading="lazy">
+          <div class="division-body">
+            <h3>LumiKode</h3>
+            <p class="division-tag">Engenharia de software, sites e aplicativos</p>
+            <button class="division-toggle" aria-expanded="false">
+              <span>Ver serviços da LumiKode</span>
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="division-panel">
+              <div class="division-panel-inner">
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Site e landing page</h4><span class="price">A partir de R$ 1.000</span></div>
+                  <p>Página rápida, funciona bem no celular, com formulário caindo direto no WhatsApp — como esta que você está vendo agora.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Site%20e%20landing%20page." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Sistema web sob medida</h4><span class="price">A partir de R$ 4.000</span></div>
+                  <p>Cadastro, login, permissão por usuário e relatório. Substitui as cinco planilhas compartilhadas em que ninguém sabe qual é a versão certa.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Sistema%20web%20sob%20medida." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Aplicativo</h4><span class="price">A partir de R$ 3.500</span></div>
+                  <p>App de pedido, agendamento ou acompanhamento de entrega. Publicado nas lojas, com painel pro dono acompanhar sem precisar ligar.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Aplicativo." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- LumiVek — Automação & Performance -->
+        <article class="division-card reveal" data-division="lumivek">
+          <img src="assets/logo-lumivek.jpg" alt="LumiVek" class="division-logo" loading="lazy">
+          <div class="division-body">
+            <h3>LumiVek</h3>
+            <p class="division-tag">Automação de processos, atendimento e escala</p>
+            <button class="division-toggle" aria-expanded="false">
+              <span>Ver serviços da LumiVek</span>
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="division-panel">
+              <div class="division-panel-inner">
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Automação de processos</h4><span class="price">A partir de R$ 1.200</span></div>
+                  <p>Tarefas repetitivas (nota fiscal, planilha, cadastro) passam a acontecer sozinhas. Ninguém digita, ninguém confere — o processo roda no fundo.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Automa%C3%A7%C3%A3o%20de%20processos." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Chatbot no WhatsApp</h4><span class="price">A partir de R$ 2.000</span></div>
+                  <p>Atende, responde preço, agenda horário e passa pro humano quando o assunto exige. Funciona inclusive de madrugada, quando metade dos contatos chega.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Chatbot%20no%20WhatsApp." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+                <div class="division-service">
+                  <div class="division-service-head"><h4>Edição de vídeo em escala</h4><span class="price">A partir de R$ 600/mês</span></div>
+                  <p>Uma gravação vira vários cortes prontos pra redes sociais, toda semana, no mesmo padrão — sem precisar editar cada um na mão.</p>
+                  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20Edi%C3%A7%C3%A3o%20de%20v%C3%ADdeo%20em%20escala." target="_blank" rel="noopener" class="ask-quote">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                    Pedir orçamento no WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== TERMINAL AO VIVO (NOVO) =========================== -->
+  <section id="automacao-ao-vivo">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Por trás da tela, tem uma automação rodando</h2>
+        <p>Um exemplo real do que acontece, em segundos, quando um lead chega até você.</p>
+      </div>
+
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span class="terminal-dot" style="background:#E8695A"></span>
+          <span class="terminal-dot" style="background:#E8C05A"></span>
+          <span class="terminal-dot" style="background:#5AE87E"></span>
+          <span class="terminal-title">automacao_atendimento.log</span>
+        </div>
+        <div class="terminal-body" id="terminalBody"></div>
+      </div>
+
+      <!-- Selo de confiança / trust badges -->
+      <div class="trust-row">
+        <div class="trust-item reveal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <span>Resposta em minutos</span>
+        </div>
+        <div class="trust-item reveal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2a10 10 0 0 0-10 10v4a2 2 0 0 0 2 2h2v-8H4a8 8 0 0 1 16 0h-2v8h2a2 2 0 0 0 2-2v-4A10 10 0 0 0 12 2z"/></svg>
+          <span>Suporte contínuo</span>
+        </div>
+        <div class="trust-item reveal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+          <span>Dados tratados com segurança</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="como-funciona">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Como funciona o processo</h2>
+        <p>Do primeiro contato até o sistema no ar.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div><h3>Conversa inicial</h3><p>Entendemos seu negócio, seu público e onde você mais perde clientes hoje.</p></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div><h3>Proposta e planejamento</h3><p>Você recebe o escopo detalhado por fases, com prazos e investimento claros.</p></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div><h3>Desenvolvimento</h3><p>Construção do atendimento automático e/ou landing page, com acompanhamento a cada etapa.</p></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div><h3>No ar e gerando resultado</h3><p>Sistema publicado, testado e captando clientes de verdade.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== CONTADOR DE RESULTADOS (NOVO) =========================== -->
+  <section id="numeros">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat reveal">
+          <div class="stat-number" data-target="24" data-suffix="h">0h</div>
+          <div class="stat-label">Atendimento automático contínuo</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number" data-target="8" data-suffix="">0</div>
+          <div class="stat-label">Frentes de automação oferecidas</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+          <div class="stat-label">Sistemas feitos sob medida</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number" data-target="6" data-suffix=" dias" data-prefix="até ">0 dias</div>
+          <div class="stat-label">Para a primeira fase no ar</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== QUEM ESTÁ POR TRÁS (NOVO) =========================== -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-box reveal">
+        <div class="about-avatar" aria-hidden="true">GS</div>
+        <div>
+          <span class="eyebrow">Quem está por trás</span>
+          <h2>Gerdyson Silva</h2>
+          <p class="about-role">Fundador da G'S Empreendimentos · Responsável técnico pelo Grupo LumiNex</p>
+          <p>Comecei a G'S Empreendimentos com um objetivo direto: tirar tarefa repetitiva da mão de quem tem negócio, usando automação e software sob medida — sem prometer mágica, sem contrato confuso. Cada projeto do Grupo LumiNex passa pelas minhas mãos, do primeiro "oi" no WhatsApp até o sistema no ar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== PERGUNTAS FREQUENTES (NOVO) =========================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Perguntas frequentes</h2>
+        <p>O que a maioria pergunta antes de fechar.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Como funciona o pagamento?</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Normalmente uma entrada no início (cobre o custo de arrancar o projeto) e o restante combinado por etapa entregue. O valor exato e a divisão são fechados na conversa do WhatsApp, depois de entender o escopo — nunca antes disso.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quanto tempo demora de verdade?</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Depende do serviço — um site sai em poucos dias, um sistema mais completo leva algumas semanas. Todo projeto começa com um prazo escrito antes de iniciar, e você acompanha o andamento fase por fase.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>E se eu não gostar do resultado?</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Cada etapa é validada com você antes de seguir pra próxima — assim ajustes acontecem durante o processo, não como surpresa no final.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            <span>Preciso entender de tecnologia pra contratar?</span>
+            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Não. A conversa é sempre em português claro, sem jargão técnico — se aparecer um termo mais técnico, explico o que significa na prática pro seu negócio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== CONTATO =========================== -->
+  <section id="contato">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <h2>Vamos automatizar seu atendimento?</h2>
+          <p>Preencha ao lado ou chame direto no WhatsApp. Resposta rápida, sem enrolação.</p>
+          <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20automatizar%20meu%20atendimento." target="_blank" rel="noopener" class="btn-primary">Chamar no WhatsApp</a>
+          <button type="button" id="copyWhatsapp" class="btn-copy">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            (98) 98411-0339
+          </button>
+        </div>
+        <form id="contactForm">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" required placeholder="Seu nome">
+
+          <label for="whats">WhatsApp</label>
+          <input id="whats" type="tel" required placeholder="(00) 00000-0000">
+
+          <label for="msg">O que você precisa?</label>
+          <textarea id="msg" required placeholder="Conte um pouco sobre seu negócio..."></textarea>
+
+          <button type="submit" class="btn-primary" style="border:none; cursor:pointer; margin-top:6px;">Enviar</button>
+          <div class="form-msg" id="formMsg"></div>
+          <p class="privacy-note">Seus dados são usados só pra te responder sobre esse orçamento — sem spam, sem compartilhar com terceiros.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <svg class="logo-mark" width="26" height="26" viewBox="0 0 40 40" aria-hidden="true">
+            <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="var(--accent)" stroke-width="2"/>
+            <circle cx="20" cy="20" r="4" fill="var(--accent)"/>
+            <line x1="20" y1="20" x2="20" y2="9" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="29" y2="26" stroke="var(--accent)" stroke-width="1.5"/>
+            <line x1="20" y1="20" x2="11" y2="26" stroke="var(--accent)" stroke-width="1.5"/>
+          </svg>
+          Grupo <span>LumiNex</span>
+        </div>
+        <!-- Slogan/frase da empresa -->
+        <p class="footer-tagline">Dados, automação e software que trabalham enquanto o seu negócio cresce.</p>
+
+        <!-- Redes sociais -->
+        <div class="footer-social">
+          <a href="https://www.instagram.com/gerdy_silva001" target="_blank" rel="noopener" aria-label="Instagram pessoal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://wa.me/5598984110339" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l1.65-4.95A9 9 0 1 1 8.05 19.4L3 21z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mini menu de navegação rápida -->
+      <nav class="footer-nav">
+        <span class="footer-nav-title">Navegação</span>
+        <a href="#divisoes">Divisões</a>
+        <a href="#automacao-ao-vivo">Automação ao vivo</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <div class="footer-meta">
+        <span>Grupo LumiNex é uma marca da G'S Empreendimentos</span>
+        <span>Gerdyson Silva — responsável técnico</span>
+        <!-- NÍVEL 5: ano automático via JS — "copyright 2026" nunca
+             fica desatualizado sozinho, porque o número não está
+             fixo no texto, é calculado toda vez que a página carrega. -->
+        <span>© <span id="currentYear"></span> G'S Empreendimentos</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp — sempre visível, em qualquer parte da página -->
+  <a href="https://wa.me/5598984110339?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20saber%20mais." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.12h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.35c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.16 8.16 0 0 1 2.41 5.81c0 4.53-3.69 8.2-8.22 8.2zm4.5-6.15c-.25-.12-1.46-.72-1.68-.8-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.96-.14.16-.29.18-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.57c.12.16 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.46-.6 1.67-1.18.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  </a>
+
+  <!-- Botão flutuante "voltar ao topo" -->
+  <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- Aviso pequeno ("toast") pro botão de copiar WhatsApp -->
+  <div class="toast" id="copyToast">Número copiado!</div>
+
+  <script>
+    /* ==================================================================
+       NÍVEL 3 (avançado): JAVASCRIPT
+       Duas coisas acontecem aqui: (1) a animação da conversa no hero
+       e (2) a validação simples do formulário de contato.
+       ================================================================== */
+
+    // ---- -3. Ano automático no rodapé ----
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // ---- -2. Barra de progresso de leitura ----
+    // NÍVEL 5: 'scroll' dispara MUITAS vezes por segundo. Fazemos o
+    // cálculo (pouco custoso, só matemática) direto nele, mas
+    // atualizamos o CSS de um jeito que o navegador já otimiza sozinho
+    // (mudar 'width' de um elemento pequeno é barato).
+    const scrollProgress = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+      if (!scrollProgress) return;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = percent + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress);
+    updateScrollProgress();
+
+    // ---- -1. Botão "voltar ao topo" ----
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        // Só aparece depois de rolar mais que uma tela de altura —
+        // não faz sentido oferecer "voltar ao topo" se já está perto dele.
+        backToTop.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ---- -0.5. Copiar WhatsApp com confirmação (toast) ----
+    const copyBtn = document.getElementById('copyWhatsapp');
+    const toast = document.getElementById('copyToast');
+    let toastTimeout;
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          // navigator.clipboard é a API moderna pra copiar texto —
+          // precisa de HTTPS pra funcionar (GitHub Pages já fornece).
+          await navigator.clipboard.writeText('5598984110339');
+        } catch (err) {
+          // Fallback bem antigo, pra navegadores raros sem suporte à API:
+          const temp = document.createElement('textarea');
+          temp.value = '5598984110339';
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+        }
+        if (toast) {
+          toast.classList.add('visible');
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }
+      });
+    }
+
+    // ---- -0.2. Efeito de digitação no título do hero ----
+    const heroTitle = document.getElementById('heroTitle');
+    const prefersReducedMotionTitle = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (heroTitle) {
+      const fullText = heroTitle.dataset.text;
+      if (prefersReducedMotionTitle) {
+        heroTitle.textContent = fullText; // mostra tudo de uma vez, sem animação
+      } else {
+        let charIndex = 0;
+        function typeChar() {
+          heroTitle.textContent = fullText.slice(0, charIndex);
+          charIndex++;
+          if (charIndex <= fullText.length) {
+            setTimeout(typeChar, 28); // velocidade da digitação
+          }
+        }
+        typeChar();
+      }
+    }
+
+    // ---- -0.1. Spotlight seguindo o mouse/dedo ----
+    const spotlight = document.getElementById('spotlight');
+    const heroSection = document.querySelector('.hero');
+    if (spotlight && heroSection) {
+      function moveSpotlight(clientX, clientY) {
+        const rect = heroSection.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * 100;
+        const y = ((clientY - rect.top) / rect.height) * 100;
+        // Atualiza as variáveis CSS que o gradiente do .spotlight usa.
+        spotlight.style.setProperty('--mx', x + '%');
+        spotlight.style.setProperty('--my', y + '%');
+      }
+      heroSection.addEventListener('mousemove', (e) => moveSpotlight(e.clientX, e.clientY));
+      heroSection.addEventListener('touchmove', (e) => {
+        if (e.touches[0]) moveSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+    }
+
+    // ---- 0. Fundo animado: rede de nós conectados ----
+    // NÍVEL 5: canvas 2D com requestAnimationFrame — o "loop" que
+    // redesenha a tela na taxa de atualização do monitor (geralmente
+    // 60x por segundo), a mesma técnica usada em jogos simples.
+    (function setupNetworkCanvas() {
+      const canvas = document.getElementById('networkCanvas');
+      if (!canvas) return;
+
+      // Respeita quem desativou animação no sistema: nem inicia o loop.
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      const ctx = canvas.getContext('2d');
+      let width, height, nodes;
+
+      function resize() {
+        // devicePixelRatio evita o canvas ficar borrado em telas
+        // retina/alta densidade (celulares modernos).
+        const dpr = window.devicePixelRatio || 1;
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+      }
+
+      function createNodes() {
+        // Quantidade proporcional ao tamanho da tela — poucos pontos
+        // no celular, mais no desktop, sem exagerar em nenhum dos dois.
+        const count = Math.min(46, Math.floor((width * height) / 18000));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.25, // velocidade horizontal bem lenta
+          vy: (Math.random() - 0.5) * 0.25,
+        }));
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Move cada ponto e "rebate" nas bordas, como uma bolinha
+        // batendo na parede.
+        nodes.forEach((n) => {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > width) n.vx *= -1;
+          if (n.y < 0 || n.y > height) n.vy *= -1;
+        });
+
+        // Conecta pontos próximos com uma linha — quanto mais perto,
+        // mais opaca a linha. É o que cria a sensação de "rede".
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = `rgba(212, 175, 55, ${1 - dist / 140})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+          ctx.fillStyle = '#D4AF37';
+          ctx.beginPath();
+          ctx.arc(nodes[i].x, nodes[i].y, 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      createNodes();
+      requestAnimationFrame(step);
+
+      // Recalcula tudo se a tela girar ou a janela for redimensionada.
+      window.addEventListener('resize', () => { resize(); createNodes(); });
+    })();
+
+    // ---- 1.7 Contador de resultados (números "subindo") ----
+    // Em vez de o número já nascer no valor final, ele "conta" do
+    // zero até o alvo — chama mais atenção e reforça que é um dado,
+    // não só decoração. Usamos requestAnimationFrame de novo, dessa
+    // vez controlado por TEMPO (Date.now()), não por frame fixo —
+    // assim a contagem dura o mesmo tempo em qualquer aparelho,
+    // rápido ou lento.
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      const duration = 1200;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        // easeOutQuad: começa rápido e desacelera no final — parece
+        // mais natural do que uma contagem em velocidade constante.
+        const eased = 1 - (1 - progress) * (1 - progress);
+        const current = Math.round(target * eased);
+        el.textContent = prefix + current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    document.querySelectorAll('.stat-number').forEach((el) => {
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            statObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      statObserver.observe(el);
+    });
+
+    // ---- 1.5 Terminal animado (log de automação em loop) ----
+    // Reaproveita a MESMA ideia da demo de chat (um "roteiro" de
+    // linhas indo à tela uma a uma), só que aqui cada linha já é
+    // um HTML pronto — dá pra colorir partes específicas (a tag
+    // [LEAD], o "OK" verde) usando <span> com classe.
+    const terminalScript = [
+      '<span class="dim">$ escutando novos contatos...</span>',
+      '<span class="tag">[LEAD]</span> Novo contato via WhatsApp recebido',
+      'Identificando intenção... compra ou locação',
+      '<span class="dim">→</span> intenção: <b>locação</b> · região: zona sul',
+      'Consultando corretor disponível na região...',
+      '<span class="ok">✔ encaminhado para: Ana Paula (corretora)</span>',
+      '<span class="dim">$ registrando no painel de leads...</span>',
+      '<span class="ok">✔ lead salvo · tempo total: 2.4s</span>',
+    ];
+    const terminalBody = document.getElementById('terminalBody');
+
+    function runTerminal() {
+      if (!terminalBody) return;
+      terminalBody.innerHTML = '';
+      let i = 0;
+      function nextLine() {
+        if (i >= terminalScript.length) {
+          // Ao terminar, deixa um cursor piscando por um tempo,
+          // depois reinicia o roteiro do zero (efeito de loop).
+          const cursor = document.createElement('span');
+          cursor.className = 'terminal-cursor';
+          terminalBody.appendChild(cursor);
+          setTimeout(runTerminal, 2200);
+          return;
+        }
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        line.innerHTML = terminalScript[i];
+        terminalBody.appendChild(line);
+        i++;
+        setTimeout(nextLine, 650);
+      }
+      nextLine();
+    }
+
+    // Só começa a "digitar" quando a seção realmente aparece na tela
+    // — mesma técnica do IntersectionObserver das animações de scroll,
+    // reaproveitada aqui pra não gastar processamento à toa enquanto
+    // o terminal está fora da vista.
+    const terminalSection = document.getElementById('automacao-ao-vivo');
+    if (terminalSection) {
+      const terminalObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            runTerminal();
+            terminalObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      terminalObserver.observe(terminalSection);
+    }
+
+    // ---- 1. Demo de chat automático ----
+    // Um "roteiro" de mensagens. Cada objeto tem quem fala e o texto.
+    const script = [
+      { from: 'client', text: 'Oi, vi o imóvel no Instagram. Ainda tá disponível?' },
+      { from: 'bot',    text: 'Oi! Sim, disponível 🙂 Você procura pra compra ou locação?' },
+      { from: 'client', text: 'Locação' },
+      { from: 'bot',    text: 'Perfeito. Já te encaminho pro corretor da região — só um instante.' },
+    ];
+
+    const chatEl = document.getElementById('chatBubbles');
+    let i = 0;
+
+    function renderNextBubble() {
+      if (i >= script.length) {
+        // reinicia o roteiro depois de uma pausa, pra demo ficar em loop
+        setTimeout(() => { chatEl.innerHTML = ''; i = 0; renderNextBubble(); }, 1800);
+        return;
+      }
+      const item = script[i];
+      const bubble = document.createElement('div');
+      bubble.className = `bubble ${item.from}`;
+      bubble.textContent = item.text;
+      chatEl.appendChild(bubble);
+      i++;
+      setTimeout(renderNextBubble, 1100);
+    }
+    renderNextBubble();
+
+    // ---- 2. Validação + integração real do formulário ----
+
+    // NÍVEL 3 (avançado): configuração central — troque aqui, nunca no meio do código.
+    const CONFIG = {
+      // Seu número com DDI+DDD, só dígitos (55 = Brasil).
+      whatsappNumber: '5598984110339',
+
+      // Endpoint do Formspree. Troque 'SEU_ID_AQUI' pelo ID gerado ao criar
+      // um formulário gratuito em https://formspree.io (leva ~2 minutos:
+      // criar conta → New Form → copiar o endpoint tipo
+      // 'https://formspree.io/f/xxxxxxx' → colar abaixo).
+      formspreeEndpoint: 'https://formspree.io/f/xyeyonee',
+    };
+
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Monta a mensagem que vai abrir pronta no seu WhatsApp.
+    function buildWhatsappLink(nome, whats, msg) {
+      const texto =
+        `Novo contato pelo site:%0A` +
+        `Nome: ${nome}%0A` +
+        `WhatsApp: ${whats}%0A` +
+        `Mensagem: ${msg}`;
+      return `https://wa.me/${CONFIG.whatsappNumber}?text=${texto}`;
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault(); // impede o recarregamento padrão da página
+
+      const nome = document.getElementById('nome').value.trim();
+      const whats = document.getElementById('whats').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+
+      if (nome.length < 2) {
+        formMsg.textContent = 'Digite seu nome completo.';
+        formMsg.className = 'form-msg err';
+        return;
+      }
+      if (whats.replace(/\D/g, '').length < 10) {
+        formMsg.textContent = 'Digite um WhatsApp válido, com DDD.';
+        formMsg.className = 'form-msg err';
+        return;
+      }
+
+      // Trava o botão pra evitar duplo clique enquanto processa.
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      // ---- Envio assíncrono para o Formspree (fica registrado mesmo que
+      // a pessoa não conclua o envio pelo WhatsApp) ----
+      // fetch() é a função nativa do navegador pra fazer requisições HTTP.
+      // 'await' pausa a função (só ela, não a página) até a resposta chegar.
+      try {
+        await fetch(CONFIG.formspreeEndpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: JSON.stringify({ nome, whatsapp: whats, mensagem: msg }),
+        });
+      } catch (err) {
+        // Se o Formspree ainda não estiver configurado (endpoint placeholder)
+        // ou o usuário estiver offline, isso vai falhar silenciosamente —
+        // por isso o WhatsApp abaixo é o caminho principal, não depende disso.
+        console.warn('Formspree não configurado ou falhou:', err);
+      }
+
+      // ---- Abre o WhatsApp já com a mensagem pronta ----
+      window.open(buildWhatsappLink(nome, whats, msg), '_blank');
+
+      formMsg.textContent = 'Abrindo o WhatsApp para finalizar o contato...';
+      formMsg.className = 'form-msg ok';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar';
+      form.reset();
+    });
+    // ---- 3. Animação de entrada por scroll (IntersectionObserver) ----
+    // Diferente de escutar o evento "scroll" (que dispara centenas de
+    // vezes por segundo e pode travar a página), o IntersectionObserver
+    // é assíncrono e só avisa quando um elemento REALMENTE entra ou sai
+    // da área visível — muito mais leve pro navegador processar.
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Depois de animar uma vez, para de observar esse elemento —
+          // ele não precisa "esconder de novo" se a pessoa rolar pra cima.
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15, // dispara quando 15% do elemento já está visível
+    });
+
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    // ---- 4. Acordeão das 3 divisões (altura real animada) ----
+    // NÍVEL 6: cada botão .division-toggle controla o .division-panel
+    // logo depois dele. scrollHeight é a altura que o conteúdo TERIA
+    // se não estivesse cortado — é esse número que usamos como
+    // max-height pra abrir. Ao fechar, voltamos pra 0.
+    document.querySelectorAll('.division-toggle').forEach((btn) => {
+      const panel = btn.closest('.division-body').querySelector('.division-panel');
+      const inner = panel.querySelector('.division-panel-inner');
+      const span = btn.querySelector('span');
+      span.dataset.closed = span.textContent; // guarda o texto original ("Ver serviços da X")
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        if (isOpen) {
+          panel.style.maxHeight = '0px';
+          span.textContent = span.dataset.closed;
+        } else {
+          panel.style.maxHeight = inner.scrollHeight + 'px';
+          span.textContent = 'Fechar';
+        }
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // ---- 5. Acordeão do FAQ (mesma técnica das divisões) ----
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      const answer = btn.nextElementSibling; // o .faq-answer vem logo depois do botão no HTML
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
+
+</body>
+</html>
